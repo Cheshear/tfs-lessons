@@ -49,7 +49,6 @@ describe('AddPurchaseComponent | форма добавления покупки'
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AddPurchaseModule],
-      declarations: [AddPurchaseComponent]
     })
       .compileComponents();
   }));

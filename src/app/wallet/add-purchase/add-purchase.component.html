@@ -1,17 +1,39 @@
-<form [formGroup]="form" (submit)="onSubmit()">
+<form [formGroup]="form" (submit)="onSubmit()"  novalidate>
   <div class="form-group">
     <input formControlName="title"
            type="text"
            class="form-control"
            automation-id="title-control"
+           required minlength="3"
+           required maxlength="80"
            placeholder="Название">
-  </div>
+    <div automation-id="title-error" class = "invalid-feedback">
+      {{formErrors.title}}
+      </div>
+    </div>
   <div class="form-group">
     <input formControlName="price"
            type="text"
            class="form-control"
            automation-id="price-control"
            placeholder="Стоимость">
+    <div automation-id="price-error" class = "invalid-feedback">
+      {{formErrors.price.replace('undefined', '')}}
+    </div>
+  </div>
+  <div class="form-group">
+    <input formControlName="date"
+           type="text"
+           class="form-control"
+           automation-id="date-control"
+           placeholder="Дата">
+  </div>
+  <div class="form-group">
+    <textarea formControlName="comment"
+           type="text"
+           class="form-control"
+           automation-id="">
+    </textarea>
   </div>
   <div class="form-group">
     <button type="submit"
@@ -22,5 +44,3 @@
     </button>
   </div>
 </form>
-
-{{form.get('title').errors | json}}
