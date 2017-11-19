@@ -80,16 +80,16 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     if (this.form) {
       const form = this.form;
       for (const field in this.formErrors) {
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (control && control.invalid) {
-          console.log(this.formErrors);
-          const messages = this.validationMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              console.log("msg:" + messages[key]);
-              this.formErrors[field] += messages[key] + ' ';
-              break;
+        if ( field ) {
+          this.formErrors[field] = '';
+          const control = form.get(field);
+          if (control && control.invalid) {
+            const messages = this.validationMessages[field];
+            for (const key in control.errors) {
+              if (control.errors.hasOwnProperty(key)) {
+                this.formErrors[field] += messages[key] + ' ';
+                break;
+              }
             }
           }
         }
@@ -110,7 +110,6 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     if (this.form.invalid) {
       return;
     }
-    console.log("price: ");
     console.log(price);
     const purchase: Purchase = {
       title: this.form.value.title,
