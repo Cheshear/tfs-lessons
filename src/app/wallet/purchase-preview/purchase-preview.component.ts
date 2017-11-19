@@ -12,6 +12,7 @@ export class PurchasePreviewComponent implements OnInit {
   @Input() isOpen: boolean;
   @Output() previewClick = new EventEmitter();
 
+
   currencyCode = currencyCode;
 
   constructor() {

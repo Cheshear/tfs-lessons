@@ -71,14 +71,14 @@ describe('PurchasePreviewComponent | компонент превьюшки по�
       component.isOpen = false;
       fixture.detectChanges();
 
-      expect(page.previewBody).toBeNull();
+      expect(page.previewBody === null).toBeTruthy();
     });
 
     it('блок с подробностями скрыт при isOpen === true', () => {
       component.isOpen = true;
       fixture.detectChanges();
 
-      expect(page.previewBody).not.toBeNull();
+      expect(page.previewBody !== null).toBeTruthy();
     });
 
     it('клик на верхнюю часть создает внешнее событие клика', () => {
@@ -114,7 +114,7 @@ describe('PurchasePreviewComponent | компонент превьюшки по�
       delete component.purchase.comment;
       fixture.detectChanges();
 
-      expect(page.comment).toBeNull();
+      expect(page.comment === null).toBeTruthy();
     });
   });
 });

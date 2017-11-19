@@ -8,7 +8,7 @@
       <th>Дата:</th>
       <td automation-id="date">{{purchase.date | date:'longDate'}}</td>
     </tr>
-    <tr>
+    <tr *ngIf="purchase.comment">
       <th>Комментарий:</th>
       <td automation-id="comment">{{purchase.comment}}</td>
     </tr>
