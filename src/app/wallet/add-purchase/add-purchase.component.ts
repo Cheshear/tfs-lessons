@@ -37,7 +37,7 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       price: ['', [Validators.required, Validators.min(10), Validators.max(1000000),
-                    Validators.pattern('/^[+-]?\\d+(\\.\\?d+)?$/')]],
+                    Validators.pattern('[-+]?[0-9]*\\.?[0-9]+')]],
       date: [''],
       comment: ['']
     });
@@ -97,15 +97,25 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  getData(date?: string): Date {
+    if (date === '' ) {
+      return new Date();
+    } else {
+      return new Date(date);
+    }
+  }
+
   onSubmit() {
-    const price = parseFloat(this.form.value.price);
+    const price = Math.floor(parseFloat(this.form.value.price) * 100) / 100;
     if (this.form.invalid) {
       return;
     }
+    console.log("price: ");
+    console.log(price);
     const purchase: Purchase = {
       title: this.form.value.title,
-      price: Math.floor(price * 100) / 100,
-      date: this.form.value.data === '' ? new Date() : new Date(this.form.value.data),
+      price: price,
+      date: this.getData(this.form.value.date),
     };
 
     if (this.form.value.comment) {
@@ -115,3 +125,5 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     this.addPurchase.emit(purchase);
   }
 }
+
+
