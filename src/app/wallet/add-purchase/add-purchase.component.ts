@@ -37,7 +37,7 @@ export class AddPurchaseComponent implements OnInit, AfterViewChecked {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]],
       price: ['', [Validators.required, Validators.min(10), Validators.max(1000000),
-                    Validators.pattern('[-+]?[0-9]*\\.?[0-9]+')]],
+                    Validators.pattern('[0-9]*\\.?[0-9]+')]],
       date: [''],
       comment: ['']
     });

@@ -9,7 +9,7 @@ import {Purchase} from '../model/purchase';
 export class WalletComponent implements OnInit {
   purchases: Purchase[] = [];
   total = 0;
-  isAddPurchaseOpen = false;
+  isAddPurchaseOpen = true;
   myButton;
   myButtonVariance = {
     Add: 'Добавить',
@@ -37,7 +37,7 @@ export class WalletComponent implements OnInit {
 
   toggleAdd() {
     this.isAddPurchaseOpen = !this.isAddPurchaseOpen;
-    this.myButton = this.isAddPurchaseOpen ? this.myButtonVariance.Cancel : this.myButtonVariance.Add;
+    this.myButton = !this.isAddPurchaseOpen ? this.myButtonVariance.Add : this.myButtonVariance.Cancel;
   }
 
   onPreviewClick(index: number) {
@@ -45,7 +45,6 @@ export class WalletComponent implements OnInit {
       this.currentOpen = null;
       return;
     }
-
     this.currentOpen = index;
   }
 

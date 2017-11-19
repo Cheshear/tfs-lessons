@@ -74,7 +74,7 @@ describe('PurchasePreviewComponent | компонент превьюшки по�
       expect(page.previewBody).toBeNull();
     });
 
-    it('блок с подробностями скрыт при isOpen === true', () => {
+    it('блок с подробностями открыт при isOpen === true', () => {
       component.isOpen = true;
       fixture.detectChanges();
 

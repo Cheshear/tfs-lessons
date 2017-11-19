@@ -15,7 +15,7 @@
       </button>
     </div>
   </div>
-  <div class="card-body" *ngIf="isAddPurchaseOpen">
+  <div automation-id="card-body" class="card-body" *ngIf="isAddPurchaseOpen">
     <tfs-add-purchase automation-id="new-purchase-form" (addPurchase)="onAddPurchase($event)"></tfs-add-purchase>
   </div>
   <ul class="list-group list-group-flush">
