@@ -51,7 +51,17 @@ export class WalletHttpService {
     );
   }
 
-  updatePurchase(x: any) {
-    return Observable.of();
+  updatePurchase(x: Purchase) {
+    const y = new Object({
+      title: x.title,
+      price: x.price,
+      date: x.date,
+      comment: x.comment
+    });
+    if (x.id) {
+      return this.http.put(`${BASE_URL}/purchases/${x.id}.json`, y);
+    } else {
+      return Observable.of(null);
+    }
   }
 }
