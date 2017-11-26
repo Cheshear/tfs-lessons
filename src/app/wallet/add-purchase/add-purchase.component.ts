@@ -12,7 +12,25 @@ const digitRegex = /^\d*\.?\d+$/;
 export class AddPurchaseComponent implements OnInit {
   form: FormGroup;
   @Output() addPurchase = new EventEmitter<Purchase>();
-  @Input() purchase: Purchase;
+  private _purchase: Purchase;
+  @Input()
+  set purchase(purch: Purchase) {
+    let date ;
+    if (purch.date) {
+      date = new Date(purch.date);
+    } else {date = new Date();
+    }
+    this.form.setValue({
+      title: purch.title,
+      price: purch.price,
+      date: date.toISOString().slice(0, 10),
+      comment: purch.comment
+    });
+    this._purchase = this.form.value;
+  }
+
+  get purchase(): Purchase { return this._purchase; }
+
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -51,10 +69,8 @@ export class AddPurchaseComponent implements OnInit {
       comment: ['']
     });
   }
-
   onSubmit() {
     const price = parseFloat(this.form.value.price);
-
     if (!isFinite(price) || this.form.invalid) {
       return;
     }
@@ -75,4 +91,5 @@ export class AddPurchaseComponent implements OnInit {
 
     this.addPurchase.emit(purchase);
   }
+
 }

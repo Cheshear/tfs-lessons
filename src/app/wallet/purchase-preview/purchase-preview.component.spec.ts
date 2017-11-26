@@ -215,7 +215,7 @@ describe('PurchasePreviewComponent | компонент превьюшки по�
       fixture.detectChanges();
       component.ngOnChanges({
         isOpen: new SimpleChange(true, false, false)
-      });
+      })
       fixture.detectChanges();
 
       expect(component.isEdit).toBe(false);

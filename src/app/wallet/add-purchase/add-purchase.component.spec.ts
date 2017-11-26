@@ -97,6 +97,7 @@ describe('AddPurchaseComponent | форма добавления покупки'
 
       it('заполняет title значением из purchase', () => {
         purchaseMock.title = 'foo';
+        fixture.detectChanges();
         component.purchase = purchaseMock;
         fixture.detectChanges();
 
@@ -106,6 +107,7 @@ describe('AddPurchaseComponent | форма добавления покупки'
 
       it('заполняет price значением из purchase', () => {
         purchaseMock.price = 100;
+        fixture.detectChanges();
         component.purchase = purchaseMock;
         fixture.detectChanges();
 
@@ -115,6 +117,7 @@ describe('AddPurchaseComponent | форма добавления покупки'
 
       it('заполняет date значением из purchase', () => {
         purchaseMock.date = '2017-11-17T18:19:20.345Z';
+        fixture.detectChanges();
         component.purchase = purchaseMock;
         fixture.detectChanges();
 
@@ -124,6 +127,7 @@ describe('AddPurchaseComponent | форма добавления покупки'
 
       it('заполняет comment значением из purchase', () => {
         purchaseMock.comment = 'foo';
+        fixture.detectChanges();
         component.purchase = purchaseMock;
         fixture.detectChanges();
 
